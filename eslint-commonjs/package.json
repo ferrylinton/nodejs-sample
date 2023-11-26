@@ -1,0 +1,19 @@
+{
+  "name": "eslint-commonjs",
+  "version": "1.0.0",
+  "description": "Node Application With Eslint (Common JS)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "eslint",
+    "node"
+  ],
+  "author": "Ferry L. H.",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.54.0"
+  }
+}
