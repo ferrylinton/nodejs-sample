@@ -1,0 +1,32 @@
+{
+  "name": "mongodb-simple",
+  "version": "1.0.0",
+  "description": "Simple Example of Mongodb With NodeJS",
+  "main": " src/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "dev": "cross-env NODE_ENV=development node src/index.js",
+    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles --forceExit",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "keywords": [
+    "node",
+    "mongodb",
+    "eslint",
+    "jest"
+  ],
+  "author": "Ferry L. H.",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^7.6.3"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "mongodb": "^6.3.0"
+  }
+}
