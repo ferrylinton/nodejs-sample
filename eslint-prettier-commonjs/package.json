@@ -1,0 +1,31 @@
+{
+	"name": "eslint-prettier-commonjs",
+	"version": "1.0.0",
+	"description": "Node Application With Eslint And Prettier (Common JS)",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "node src/index.js",
+		"dev": "node src/index.js",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier . --write",
+		"format:check": "prettier . --check"
+	},
+	"keywords": [
+		"node",
+		"eslint",
+		"prettier"
+	],
+	"author": "ferrylinton",
+	"license": "ISC",
+	"devDependencies": {
+		"eslint": "^8.54.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-import": "^2.29.0",
+		"eslint-plugin-n": "^16.3.1",
+		"eslint-plugin-prettier": "^5.0.1",
+		"eslint-plugin-promise": "^6.1.1",
+		"prettier": "3.1.0"
+	}
+}

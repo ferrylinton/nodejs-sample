@@ -1,16 +1,15 @@
-const { find } = require('./services/todo-service');
+const todoServcie = require('./services/todo-service');
 
 async function run() {
-    try {
-        const movie = await find();
-        console.log(movie);
-    } catch (error) {
-        console.log(error);
-    } finally {
-        setTimeout(function () {
-            process.exit();
-        }, 1000);
-    }
+	const todoes = await todoServcie.find();
+	console.log('>>> todoService.find()');
+	console.log(todoes);
 }
 
-run().catch(console.dir);
+function close() {
+	setTimeout(function () {
+		process.exit();
+	}, 1000);
+}
+
+run().catch(console.dir).finally(close);
