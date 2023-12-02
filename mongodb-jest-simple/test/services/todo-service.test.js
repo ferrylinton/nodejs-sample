@@ -1,53 +1,16 @@
-const { MONGODB_DATABASE, MONGODB_PORT } = require('../../src/configs/env-constant');
-const { find } = require('../../src/services/todo-service');
-const { MongoMemoryServer } = require('mongodb-memory-server');
-const { getMongoClient } = require('../../src/configs/mongodb');
+const todoService = require('../../src/services/todo-service');
 const assert = require('assert');
-
-
-let mongoServer;
+const { startMongoServer, stopMongoServer } = require('../libs/mongo-test-util');
 
 beforeAll(async () => {
-  try {
-    mongoServer = new MongoMemoryServer({
-      instance: {
-        port: parseInt(MONGODB_PORT),
-        dbName: MONGODB_DATABASE
-      }
-    })
-
-
-    await mongoServer.start(true);
-    console.log(`mongoServer starting on ${mongoServer.getUri()}`);
-  } catch (error) {
-    console.log(error);
-  }
-
+	await startMongoServer();
 });
 
 afterAll(async () => {
-  try {
-    const connection = await getMongoClient();
-    if (connection) {
-      connection.close();
-    }
-
-    if (mongoServer) {
-      await mongoServer.stop();
-    }
-  } catch (error) {
-    console.log(error);
-  }
-
+	await stopMongoServer();
 });
 
-describe('todoService.find()', () => {
-
-  test('todoes should be an empty array', async () => {
-    const todoes = await find();
-    assert.strictEqual(todoes.length, 0);
-  });
-  
-})
-
-
+test('todoes should be an empty array', async () => {
+	const todoes = await todoService.find();
+	assert.strictEqual(todoes.length, 0);
+});
