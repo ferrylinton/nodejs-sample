@@ -1,29 +1,38 @@
 {
-  "name": "multi-env-files",
-  "version": "1.0.0",
-  "description": "Setup Multiple .env Files For Development, Testing And Production",
-  "main": " src/index.js",
-  "scripts": {
-    "start": "cross-env NODE_ENV=production node src/index.js",
-    "dev": "cross-env NODE_ENV=development node src/index.js",
-    "test": "cross-env NODE_ENV=test jest",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
-  },
-  "keywords": [
-    "node",
-    "eslint",
-    "jest"
-  ],
-  "author": "ferrylinton",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^8.54.0",
-    "eslint-plugin-jest": "^27.6.0",
-    "jest": "^29.7.0"
-  },
-  "dependencies": {
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.3.1"
-  }
+	"name": "multi-env-files",
+	"version": "1.0.0",
+	"description": "Setup Multiple .env Files For Development, Testing And Production",
+	"main": " src/index.js",
+	"scripts": {
+		"start": "cross-env NODE_ENV=production node src/index.js",
+		"dev": "cross-env NODE_ENV=development node src/index.js",
+		"test": "cross-env NODE_ENV=test jest",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier . --write",
+		"format:check": "prettier . --check"
+	},
+	"keywords": [
+		"node",
+		"eslint",
+		"jest"
+	],
+	"author": "ferrylinton",
+	"license": "ISC",
+	"dependencies": {
+		"cross-env": "^7.0.3",
+		"dotenv": "^16.3.1"
+	},
+	"devDependencies": {
+		"eslint": "^8.54.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-import": "^2.29.0",
+		"eslint-plugin-jest": "^27.6.0",
+		"eslint-plugin-n": "^16.3.1",
+		"eslint-plugin-prettier": "^5.0.1",
+		"eslint-plugin-promise": "^6.1.1",
+		"jest": "^29.7.0",
+		"prettier": "3.1.0"
+	}
 }
