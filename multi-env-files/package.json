@@ -15,6 +15,7 @@
 	"keywords": [
 		"node",
 		"eslint",
+		"prettier",
 		"jest"
 	],
 	"author": "ferrylinton",
