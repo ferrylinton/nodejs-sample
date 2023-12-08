@@ -1,0 +1,12 @@
+{
+  "name": "ecmascript",
+  "version": "1.0.0",
+  "description": "Simple Node Application With ECMAScript",
+  "main": "src/index.mjs",
+  "scripts": {
+    "dev": "node src/index.mjs"
+  },
+  "keywords": [],
+  "author": "ferrylinton",
+  "license": "ISC"
+}

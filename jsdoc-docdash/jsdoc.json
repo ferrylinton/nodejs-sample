@@ -1,0 +1,53 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+        "include": [
+            "src"
+        ],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "docdash": {
+        "static": true,
+        "sort": true,
+        "search": true,
+        "collapse": true,
+        "typedefs": true,
+        "removeQuotes": "none",
+        "scripts": [
+            "jsdoc"
+        ],
+        "meta": { 
+            "title": "JSDoc - Docdash", 
+            "description": "Simple JSDoc with Docdash",
+            "keyword": "jsdoc" 
+        },
+        "menu": {
+            "Github repo": {
+                "href": "https://github.com/ferrylinton/nodejs-sample/tree/main/jsdoc-docdash",
+                "target": "_blank",
+                "class": "menu-item",
+                "id": "repository"
+            }
+        }
+    },
+    "templates": {
+        "default": {
+            "useLongnameInNav": true
+        }
+    },
+    "opts": {
+        "template": "node_modules/docdash",
+        "destination": "./docs/",
+        "readme": "./readme.md",
+        "encoding": "utf8",
+        "recurse": true,
+        "verbose": true
+    },
+    "typedefs": true
+}

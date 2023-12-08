@@ -10,7 +10,7 @@ afterAll(async () => {
 	await stopMongoServer();
 });
 
-test('todoes should be an empty array', async () => {
+test('find all data', async () => {
 	const todoes = await todoService.find();
 	assert.strictEqual(todoes.length, 0);
 });
