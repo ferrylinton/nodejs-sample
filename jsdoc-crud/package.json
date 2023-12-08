@@ -1,7 +1,7 @@
 {
-  "name": "jsdoc-docdash",
+  "name": "jsdoc-simple",
   "version": "1.0.0",
-  "description": "JSDoc With Docdash Example",
+  "description": "Simple Jsdoc",
   "main": "src/index.js",
   "scripts": {
     "dev": "node src/index.js",
@@ -17,5 +17,9 @@
     "docdash": "^2.0.2",
     "jsdoc": "^4.0.2",
     "rimraf": "^5.0.5"
+  },
+  "dependencies": {
+    "papaparse": "^5.4.1",
+    "uuid": "^9.0.1"
   }
 }
