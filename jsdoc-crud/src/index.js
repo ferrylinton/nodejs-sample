@@ -18,9 +18,8 @@ async function run() {
         console.log(">>> todoService.update()");
         console.log(update);
 
-        // const deleteById = await todoService.deleteById(create.id);
-        // console.log(">>> todoService.deleteById()");
-        // console.log(deleteById);
+        await todoService.deleteById(create.id);
+        console.log(">>> todoService.deleteById()");
 
     } finally {
         console.log('[APP] exit after 1 second')

@@ -8,7 +8,21 @@ const { read, writeOrAppend, rewrite } = require('./file-service');
  */
 
 /**
- * @typedef {import('./typedefs.js').Todo} Todo
+ * @typedef {object} Todo
+ * @property {string} id - The Id
+ * @property {string} task - The task
+ * @property {boolean} done - The status of the task
+ * @property {date} createdAt - Created date
+ * @property {date|null} updatedAt - Updated date
+ * @name Todo
+ * @example
+ * const todo = {
+ * 	id: '23c695db-601e-42b7-bbd7',
+ * 	task: 'Init node application',
+ * 	done: false,
+ * 	createdAt: '2023-12-05T11:11:57.950Z',
+ * 	updatedAt: null
+ * }
  */
 
 /**
@@ -79,7 +93,9 @@ exports.create = task => {
 /**
  * Update a todo data
  * @param {string} id - The ID of todo data
- * @param {Todo} todo - The new {@link Todo} data.
+ * @param {Object} updateData - The new data
+ * @param {string} updateData.task - The new task
+ * @param {boolean} updateData.done - The task status
  * @returns {Promise<Todo>} Object of {@link Todo}.
  */
 exports.update = (id, { task, done }) => new Promise(async (resolve, reject) => {

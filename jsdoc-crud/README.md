@@ -1,6 +1,6 @@
-# JSDoc with Docdash
+#   Aplikasi CRUD Node.js Dengan JSDoc
 
-JSDoc is a library used to document Javascript code. In this post we will show you how to configure JSDoc with Node Applications.
+This post will show you how to create a CRUD application using Node.js and add JSDoc documentation for each function. JSDoc documentation will use the docdash template.
 
 ## 	Requirement
 
@@ -12,9 +12,3 @@ JSDoc is a library used to document Javascript code. In this post we will show y
 1.  [NodeJS](https://nodejs.org/api/modules.html)
 1.  [JSDoc](https://jsdoc.app/)
 1.  [Docdash](https://github.com/clenemt/docdash#readme)
-
-## Install Library
-
-```console
-npm install --save-dev jsdoc
-```

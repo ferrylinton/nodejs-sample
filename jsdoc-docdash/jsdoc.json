@@ -1,37 +1,20 @@
 {
-	"source": {
-		"include": [
-			"src"
-		],
-		"includePattern": ".js$"
-	},
-	"plugins": [
-        "plugins/markdown"
-    ],
-	"opts": {
-		"recurse": true,
-		"destination": "./docs/",
-		"readme": "./README.md",
-        "template": "node_modules/docdash"
-	},
-	"docdash": {
-        "static": true,
+    "source": {
+        "include": "src",
+        "includePattern": ".js$"
+    },
+    "opts": {
+        "template": "node_modules/docdash",
+        "destination": "./docs/",
+        "readme": "./readme.md",
+        "recurse": true
+    },
+    "docdash": {
         "sort": true,
         "search": true,
-        "collapse": true,
-        "typedefs": true,
-        "removeQuotes": "none",
-        "scripts": [
-            "jsdoc"
-        ],
-        "meta": { 
-            "title": "JSDoc - Docdash", 
-            "description": "Simple JSDoc with Docdash",
-            "keyword": "jsdoc" 
-        },
         "menu": {
             "Github repo": {
-                "href": "https://github.com/ferrylinton/nodejs-sample/tree/main/jsdoc-docdash",
+                "href": "https://github.com/ferrylinton/nodejs-sample/tree/main/jsdoc-crud",
                 "target": "_blank",
                 "class": "menu-item",
                 "id": "repository"
