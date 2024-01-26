@@ -1,100 +1,92 @@
 const { ObjectId } = require('mongodb');
 const { getCollection } = require('../configs/mongodb');
 
+/**
+ * A service that handles CRUD operations of Todo's data
+ * @author ferrylinton
+ * @module TodoService
+ */
+
+/** @typedef {import("mongodb").InsertOneResult} InsertOneResult */
+/** @typedef {import("mongodb").UpdateResult} UpdateResult */
+/** @typedef {import("mongodb").DeleteResult} DeleteResult */
 
 /**
  * @typedef {Object} Todo
  * @property {string} _id - The Id
  * @property {string} task - The task
  * @property {boolean} done - The status of the task
- */
-
-/**
- * @typedef {Object} InsertOneResult
- * @property {boolean} acknowledged - Indicates whether this write result was acknowledged.
- * @property {number} insertedId - The identifier that was inserted.
- */
-
-/**
- * @typedef {Object} UpdateResult
- * @property {boolean} acknowledged - Indicates whether this write result was acknowledged.
- * @property {number} matchedCount - The number of documents that matched the filter
- * @property {number} modifiedCount - The number of documents that were modified
- * @property {number} upsertedCount - The number of documents that were upserted
- * @property {string} upsertedId - The identifier of the inserted document if an upsert took place
- */
-
-/**
- * @typedef {Object} DeleteResult
- * @property {boolean} acknowledged - Indicates whether this write result was acknowledged.
- * @property {number} deletedCount - The number of documents that were deleted.
+ * @property {date} createdAt - Created date
+ * @property {date|null} updatedAt - Updated date
  */
 
 /**
  * @const {string} Name of Todo Collection
  */
-const TODO_COLLECTION = 'todo'
+const TODO_COLLECTION = 'todoes';
 
 /**
  * Find multiple Todo documents
- * 
+ *
  * @returns Array of {@link Todo} documetns.
- * 
+ *
  */
-const find = async () => {
-    const todoCollection = await getCollection(TODO_COLLECTION);
-    return todoCollection.find({done: false}).sort({ 'task': -1 }).toArray();
-}
+exports.find = async () => {
+	const todoCollection = await getCollection(TODO_COLLECTION);
+	return todoCollection.find().toArray();
+};
 
 /**
  * Find a Todo document by ID
- * 
+ *
  * @param {string} _id - The ID of todo document
  * @returns A {@link Todo} document
  */
-const findById = async (_id) => {
-    const todoCollection = await getCollection(TODO_COLLECTION);
-    return await todoCollection.findOne({ _id: new ObjectId(_id) });
-}
+exports.findById = async _id => {
+	const todoCollection = await getCollection(TODO_COLLECTION);
+	return await todoCollection.findOne({ _id: new ObjectId(_id) });
+};
 
 /**
  * Create a new Todo document.
- * 
- * @param {Todo} todo - The new {@link Todo} data.
+ *
+ * @param {string} task - The task
  * @returns Object of {@link InsertOneResult}
  */
-const create = async (todo) => {
-    const todoCollection = await getCollection(TODO_COLLECTION);
-    return await todoCollection.insertOne(todo);
-}
+exports.create = async task => {
+	const todo = {
+		task,
+		done: false,
+		createdAt: new Date(),
+		updatedAt: null,
+	};
+	const todoCollection = await getCollection(TODO_COLLECTION);
+	return await todoCollection.insertOne(todo);
+};
 
 /**
  * Update a todo document in a collection
- * 
+ *
  * @param {string} _id - The ID of todo document
- * @param {Todo} todo - The new {@link Todo} data.
+ * @param {Object} updateData - The new data
+ * @param {string} updateData.task - The new task
+ * @param {boolean} updateData.done - The task status
  * @returns Object of {@link UpdateResult}.
  */
-const update = async (_id, todo) => {
-    const todoCollection = await getCollection(TODO_COLLECTION);
-    return await todoCollection.updateOne({ _id: new ObjectId(_id) }, { $set: todo });
-}
+exports.update = async (_id, { task, done }) => {
+	const todoCollection = await getCollection(TODO_COLLECTION);
+	const updatedAt = new Date();
+	const todo = { task, done, updatedAt };
+	return await todoCollection.updateOne({ _id: new ObjectId(_id) }, { $set: todo });
+};
 
 /**
  * Delete a todo document from a collection.
- * 
+ *
  * @param {string} _id - The ID of todo document
  * @returns Object of {@link DeleteResult}.
  */
-const deleteById = async (_id) => {
-    const todoCollection = await getCollection(TODO_COLLECTION);
-    return await todoCollection.deleteOne({ _id: new ObjectId(_id) });
-}
-
-module.exports = {
-    find,
-    findById,
-    create,
-    update,
-    deleteById
+exports.deleteById = async _id => {
+	const todoCollection = await getCollection(TODO_COLLECTION);
+	return await todoCollection.deleteOne({ _id: new ObjectId(_id) });
 };

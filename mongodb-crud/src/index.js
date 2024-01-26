@@ -1,43 +1,23 @@
 const todoService = require('./services/todo-service');
 
-async function run() {
-    try {
-        const todo = {
-            task: "Create node application",
-            done: false
-        }
-
-        const todos = await todoService.find();
-        console.log(">>> todoService.find()");
-        console.log(todos);
-
-        todos.forEach(async todo => {
-            todoService.deleteById(todo._id)
-        });
-
-        const create = await todoService.create(todo);
-        console.log(">>> todoService.create()");
-        console.log(create);
-        todo._id = create._id;
-
-        const findById = await todoService.findById(todo._id);
-        console.log(">>> todoService.findById()");
-        console.log(findById);
-
-        const update = await todoService.update(todo._id, {done: true});
-        console.log(">>> todoService.update()");
-        console.log(update);
-
-        const deleteById = await todoService.deleteById(todo._id);
-        console.log(">>> todoService.deleteById()");
-        console.log(deleteById);
-
-    } finally {
-        console.log('[APP] exit after 1 second')
-        setTimeout(function () { 
-            process.exit();
-        }, 1000);
-    }
+async function main() {
+	try {
+		// const create = await todoService.create('Crete node application');
+		// console.log(create);
+		// const find = await todoService.find();
+		// console.log(find);
+		// const findById = await todoService.findById('65768c6ac1c63a8c1cd44a22');
+		// console.log(findById);
+		// const update = await todoService.update('65768c6ac1c63a8c1cd44a22', { done: true });
+		// console.log(update);
+		// const deleteById = await todoService.deleteById('65768c6ac1c63a8c1cd44a22');
+		// console.log(deleteById);
+	} finally {
+		console.log('[APP] exit after 1 second');
+		setTimeout(function () {
+			process.exit();
+		}, 1000);
+	}
 }
 
-run().catch(console.dir);
+main().catch(console.dir);

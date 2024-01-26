@@ -3,7 +3,6 @@ module.exports = {
 		commonjs: true,
 		node: true,
 		es6: true,
-		jest: true,
 	},
 	extends: ['plugin:prettier/recommended', 'prettier', 'eslint:recommended'],
 	overrides: [
@@ -12,7 +11,6 @@ module.exports = {
 			parserOptions: {
 				sourceType: 'script',
 			},
-			plugins: ['jest'],
 		},
 	],
 	parserOptions: {
